@@ -13,6 +13,7 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
+  const portfolioLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,13 +64,13 @@ export function Contact() {
                 </div>
               </a>
 
-              <a href="https://www.behance.net/berrywine" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+              <a href={portfolioLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                   <ExternalLink className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Behance Portfolio</p>
-                  <p className="text-lg font-headline font-semibold">berrywine</p>
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Portfolio Folder</p>
+                  <p className="text-lg font-headline font-semibold">View My Works</p>
                 </div>
               </a>
             </div>

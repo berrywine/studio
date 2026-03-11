@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -5,6 +6,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ExternalLink, ShieldAlert, FolderKanban } from 'lucide-react';
 
 export function Portfolio() {
+  const portfolioLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
+
   return (
     <section id="portfolio" className="py-24 bg-secondary/20 relative overflow-hidden">
       {/* Cinematic background accent */}
@@ -29,12 +32,12 @@ export function Portfolio() {
               
               <h3 className="font-headline text-2xl md:text-3xl font-bold mb-4">Portfolio / Works</h3>
               <p className="text-lg text-muted-foreground mb-8 font-body">
-                Explore a comprehensive collection of my posters, branding, and digital creatives on Behance.
+                Explore a comprehensive collection of my posters, branding, and digital creatives in my portfolio folder.
               </p>
 
               <div className="space-y-8">
                 <Button size="lg" className="rounded-full h-16 px-12 text-lg font-bold bg-primary hover:bg-primary/90 gap-3 shadow-xl shadow-primary/20" asChild>
-                  <a href="https://www.behance.net/berrywine" target="_blank" rel="noopener noreferrer">
+                  <a href={portfolioLink} target="_blank" rel="noopener noreferrer">
                     View My Works
                     <ExternalLink className="w-5 h-5" />
                   </a>

@@ -2,10 +2,11 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ExternalLink, Mail, ArrowDown } from 'lucide-react';
+import { ExternalLink, ArrowDown } from 'lucide-react';
 
 export function Hero() {
   const heroImg = PlaceHolderImages.find(img => img.id === 'hero-bg');
+  const portfolioLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -45,9 +46,9 @@ export function Hero() {
             <a href="#contact">Contact Me</a>
           </Button>
           <Button size="lg" variant="ghost" className="rounded-full hover:bg-white/10" asChild>
-            <a href="https://www.behance.net/berrywine" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            <a href={portfolioLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <ExternalLink className="w-4 h-4" />
-              Behance
+              View Works
             </a>
           </Button>
         </div>
