@@ -1,138 +1,59 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ExternalLink, Info } from 'lucide-react';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-const portfolioItems = [
-  {
-    id: 1,
-    title: 'Movie Concept Poster',
-    category: 'Poster Design',
-    description: 'A cinematic concept exploring minimalist storytelling for a psychological thriller.',
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-1')?.imageUrl,
-    hint: 'movie poster design'
-  },
-  {
-    id: 2,
-    title: 'Social Media Campaign',
-    category: 'Graphic Design',
-    description: 'Bold visual strategy for a digital brand launch across multiple platforms.',
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-4')?.imageUrl,
-    hint: 'social media creative'
-  },
-  {
-    id: 4,
-    title: 'Aesthetic Edit',
-    category: 'Creative Edits',
-    description: 'Experimental composition using layered lighting and cinematic color grading.',
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-6')?.imageUrl,
-    hint: 'cinematic edit'
-  },
-  {
-    id: 5,
-    title: 'College Event Branding',
-    category: 'Graphic Design',
-    description: 'Full identity design for a national-level college technology symposium.',
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-3')?.imageUrl,
-    hint: 'event poster'
-  }
-];
+import { Card, CardContent } from '@/components/ui/card';
+import { ExternalLink, ShieldAlert, FolderKanban } from 'lucide-react';
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="py-24 bg-secondary/20">
-      <div className="container px-4">
+    <section id="portfolio" className="py-24 bg-secondary/20 relative overflow-hidden">
+      {/* Cinematic background accent */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4">Portfolio <span className="text-primary">Showcase</span></h2>
+          <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4">
+            Portfolio <span className="text-primary">Showcase</span>
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto font-body">
-            A curated collection of my work spanning poster design, branding, and cinematic visual experiments.
+            My creative journey through cinematic design and visual storytelling.
           </p>
         </div>
 
-        <Tabs defaultValue="all" className="w-full">
-          <div className="flex justify-center mb-12">
-            <TabsList className="bg-background border border-border">
-              <TabsTrigger value="all" className="data-[state=active]:bg-primary">All Work</TabsTrigger>
-              <TabsTrigger value="Poster Design" className="data-[state=active]:bg-primary">Poster Design</TabsTrigger>
-              <TabsTrigger value="Graphic Design" className="data-[state=active]:bg-primary">Graphic Design</TabsTrigger>
-              <TabsTrigger value="Creative Edits" className="data-[state=active]:bg-primary">Creative Edits</TabsTrigger>
-            </TabsList>
-          </div>
-
-          <TabsContent value="all" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {portfolioItems.map((item) => <PortfolioCard key={item.id} item={item} />)}
-            </div>
-          </TabsContent>
-
-          {['Poster Design', 'Graphic Design', 'Creative Edits'].map((category) => (
-            <TabsContent key={category} value={category} className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                {portfolioItems
-                  .filter(item => item.category === category)
-                  .map((item) => <PortfolioCard key={item.id} item={item} />)}
+        <div className="max-w-3xl mx-auto">
+          <Card className="bg-background/40 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-500 shadow-2xl overflow-hidden group">
+            <CardContent className="p-12 text-center">
+              <div className="mb-8 inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
+                <FolderKanban className="w-10 h-10" />
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
+              
+              <h3 className="font-headline text-2xl md:text-3xl font-bold mb-4">Portfolio / Works</h3>
+              <p className="text-lg text-muted-foreground mb-8 font-body">
+                Explore a comprehensive collection of my posters, branding, and digital creatives on Behance.
+              </p>
 
-        <div className="mt-16 text-center">
-          <Button size="lg" variant="outline" className="rounded-full gap-2 group border-primary text-primary hover:bg-primary/10" asChild>
-            <a href="https://www.behance.net/berrywine" target="_blank" rel="noopener noreferrer">
-              View Full Portfolio on Behance
-              <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </Button>
+              <div className="space-y-8">
+                <Button size="lg" className="rounded-full h-16 px-12 text-lg font-bold bg-primary hover:bg-primary/90 gap-3 shadow-xl shadow-primary/20" asChild>
+                  <a href="https://www.behance.net/berrywine" target="_blank" rel="noopener noreferrer">
+                    View My Works
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                </Button>
+
+                <div className="pt-8 border-t border-border/50">
+                  <div className="flex items-start gap-3 text-left max-w-md mx-auto bg-secondary/30 p-4 rounded-xl border border-border/30">
+                    <ShieldAlert className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                    <p className="text-xs text-muted-foreground font-body leading-relaxed">
+                      <span className="text-accent font-bold block mb-1">Security Note:</span>
+                      All my works are accessible through the provided portfolio link. They are not displayed directly on the website to prevent unauthorized copying or misuse.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
-  );
-}
-
-function PortfolioCard({ item }: { item: any }) {
-  return (
-    <div className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-card border border-border shadow-lg portfolio-card-hover">
-      <Image
-        src={item.image || 'https://placehold.co/600x800'}
-        alt={item.title}
-        fill
-        className="object-cover transition-transform duration-500 group-hover:scale-110"
-        data-ai-hint={item.hint}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <p className="text-primary text-xs font-headline uppercase tracking-widest mb-1">{item.category}</p>
-          <h3 className="text-xl font-bold font-headline mb-2">{item.title}</h3>
-          
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-white transition-colors mb-4">
-                  <Info className="w-4 h-4" />
-                  View Process
-                </button>
-              </TooltipTrigger>
-              <TooltipContent className="bg-background border-border text-foreground p-4 max-w-[250px]">
-                <p>{item.description}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <Button size="sm" variant="secondary" className="w-full bg-accent text-accent-foreground font-semibold rounded-lg" asChild>
-             <a href="https://www.behance.net/berrywine" target="_blank" rel="noopener noreferrer">View Project</a>
-          </Button>
-        </div>
-      </div>
-    </div>
   );
 }
