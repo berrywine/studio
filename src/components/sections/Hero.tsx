@@ -51,7 +51,7 @@ export function Hero() {
             <Button size="lg" variant="ghost" className="rounded-full hover:bg-white/10" asChild>
               <a href={driveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 <ExternalLink className="w-4 h-4" />
-                Drive
+                Works
               </a>
             </Button>
             <Button size="lg" variant="ghost" className="rounded-full hover:bg-white/10" asChild>

@@ -39,7 +39,7 @@ export function Portfolio() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
                 <Button size="lg" className="rounded-full h-16 px-10 text-lg font-bold bg-primary hover:bg-primary/90 gap-3 shadow-xl shadow-primary/20 w-full sm:w-auto" asChild>
                   <a href={driveLink} target="_blank" rel="noopener noreferrer">
-                    Google Drive
+                    Works
                     <ExternalLink className="w-5 h-5" />
                   </a>
                 </Button>

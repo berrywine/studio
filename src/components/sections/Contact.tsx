@@ -71,8 +71,8 @@ export function Contact() {
                   <ExternalLink className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Portfolio Folder</p>
-                  <p className="text-lg font-headline font-semibold">Google Drive</p>
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">View Portfolio</p>
+                  <p className="text-lg font-headline font-semibold">Works</p>
                 </div>
               </a>
 
