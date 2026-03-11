@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, ExternalLink, Send, CheckCircle2, Globe } from 'lucide-react';
+import { Mail, Phone, ExternalLink, Send, CheckCircle2, Globe, Linkedin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function Contact() {
@@ -15,6 +15,7 @@ export function Contact() {
   
   const driveLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
   const behanceLink = "https://www.behance.net/berrywine";
+  const linkedinLink = "https://www.linkedin.com/in/srihari-viji-ravichandran-3b9b7928b";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,7 +84,17 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Behance Profile</p>
-                  <p className="text-lg font-headline font-semibold group-hover:text-accent transition-colors">View on Behance</p>
+                  <p className="text-lg font-headline font-semibold group-hover:text-accent transition-colors">Behance</p>
+                </div>
+              </a>
+
+              <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <Linkedin className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Professional</p>
+                  <p className="text-lg font-headline font-semibold group-hover:text-primary transition-colors">LinkedIn</p>
                 </div>
               </a>
             </div>
