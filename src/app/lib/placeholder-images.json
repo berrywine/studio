@@ -1,0 +1,47 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-bg",
+      "description": "Dark cinematic atmospheric background",
+      "imageUrl": "https://picsum.photos/seed/dark-cinema/1920/1080",
+      "imageHint": "cinematic dark atmosphere"
+    },
+    {
+      "id": "portfolio-1",
+      "description": "Movie concept poster",
+      "imageUrl": "https://picsum.photos/seed/movie-poster/600/900",
+      "imageHint": "movie poster design"
+    },
+    {
+      "id": "portfolio-2",
+      "description": "Awareness poster design",
+      "imageUrl": "https://picsum.photos/seed/social-awareness/600/900",
+      "imageHint": "minimalist awareness poster"
+    },
+    {
+      "id": "portfolio-3",
+      "description": "Event branding poster",
+      "imageUrl": "https://picsum.photos/seed/event-design/600/900",
+      "imageHint": "abstract event poster"
+    },
+    {
+      "id": "portfolio-4",
+      "description": "Social media creative",
+      "imageUrl": "https://picsum.photos/seed/social-media/800/800",
+      "imageHint": "graphic design creative"
+    },
+    {
+      "id": "portfolio-5",
+      "description": "Campaign poster",
+      "imageUrl": "https://picsum.photos/seed/campaign/600/900",
+      "imageHint": "minimalist campaign poster"
+    },
+    {
+      "id": "portfolio-6",
+      "description": "Cinematic edit",
+      "imageUrl": "https://picsum.photos/seed/cinematic-edit/800/600",
+      "imageHint": "cinematic photography edit"
+    }
+  ]
+}
