@@ -2,11 +2,12 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ExternalLink, ArrowDown } from 'lucide-react';
+import { ExternalLink, ArrowDown, Globe } from 'lucide-react';
 
 export function Hero() {
   const heroImg = PlaceHolderImages.find(img => img.id === 'hero-bg');
-  const portfolioLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
+  const driveLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
+  const behanceLink = "https://www.behance.net/berrywine";
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -45,12 +46,21 @@ export function Hero() {
           <Button size="lg" variant="outline" className="rounded-full border-primary text-primary hover:bg-primary/10 px-8" asChild>
             <a href="#contact">Contact Me</a>
           </Button>
-          <Button size="lg" variant="ghost" className="rounded-full hover:bg-white/10" asChild>
-            <a href={portfolioLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              <ExternalLink className="w-4 h-4" />
-              View Works
-            </a>
-          </Button>
+          
+          <div className="flex gap-2">
+            <Button size="lg" variant="ghost" className="rounded-full hover:bg-white/10" asChild>
+              <a href={driveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <ExternalLink className="w-4 h-4" />
+                Drive
+              </a>
+            </Button>
+            <Button size="lg" variant="ghost" className="rounded-full hover:bg-white/10" asChild>
+              <a href={behanceLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <Globe className="w-4 h-4" />
+                Behance
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
 

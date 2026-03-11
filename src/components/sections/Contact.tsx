@@ -6,14 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, ExternalLink, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, ExternalLink, Send, CheckCircle2, Globe } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
-  const portfolioLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
+  
+  const driveLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
+  const behanceLink = "https://www.behance.net/berrywine";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +45,7 @@ export function Contact() {
               Open to collaborations, freelance projects, and creative design opportunities. If you have a story to tell, I'm here to design it.
             </p>
 
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
               <a href="mailto:sriharirroverhere@gmail.com" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                   <Mail className="w-5 h-5" />
@@ -64,13 +66,23 @@ export function Contact() {
                 </div>
               </a>
 
-              <a href={portfolioLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+              <a href={driveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
                   <ExternalLink className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Portfolio Folder</p>
-                  <p className="text-lg font-headline font-semibold">View My Works</p>
+                  <p className="text-lg font-headline font-semibold">Google Drive</p>
+                </div>
+              </a>
+
+              <a href={behanceLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Behance Profile</p>
+                  <p className="text-lg font-headline font-semibold">View on Behance</p>
                 </div>
               </a>
             </div>
