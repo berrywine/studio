@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -32,14 +31,6 @@ const portfolioItems = [
     hint: 'social media creative'
   },
   {
-    id: 3,
-    title: 'Election Awareness',
-    category: 'Poster Design',
-    description: 'Campaign poster focusing on clean typography to drive community engagement.',
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-2')?.imageUrl,
-    hint: 'minimalist awareness'
-  },
-  {
     id: 4,
     title: 'Aesthetic Edit',
     category: 'Creative Edits',
@@ -54,14 +45,6 @@ const portfolioItems = [
     description: 'Full identity design for a national-level college technology symposium.',
     image: PlaceHolderImages.find(img => img.id === 'portfolio-3')?.imageUrl,
     hint: 'event poster'
-  },
-  {
-    id: 6,
-    title: 'Concept Visual',
-    category: 'Creative Edits',
-    description: 'Surrealist visual storytelling piece inspired by modern cinematic directors.',
-    image: PlaceHolderImages.find(img => img.id === 'portfolio-5')?.imageUrl,
-    hint: 'minimalist design'
   }
 ];
 
@@ -87,14 +70,14 @@ export function Portfolio() {
           </div>
 
           <TabsContent value="all" className="mt-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {portfolioItems.map((item) => <PortfolioCard key={item.id} item={item} />)}
             </div>
           </TabsContent>
 
           {['Poster Design', 'Graphic Design', 'Creative Edits'].map((category) => (
             <TabsContent key={category} value={category} className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 {portfolioItems
                   .filter(item => item.category === category)
                   .map((item) => <PortfolioCard key={item.id} item={item} />)}
@@ -145,7 +128,7 @@ function PortfolioCard({ item }: { item: any }) {
             </Tooltip>
           </TooltipProvider>
 
-          <Button size="sm" variant="accent" className="w-full bg-accent text-accent-foreground font-semibold rounded-lg" asChild>
+          <Button size="sm" variant="secondary" className="w-full bg-accent text-accent-foreground font-semibold rounded-lg" asChild>
              <a href="https://www.behance.net/berrywine" target="_blank" rel="noopener noreferrer">View Project</a>
           </Button>
         </div>
