@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -33,9 +32,11 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3 blur-[120px] pointer-events-none" />
+      {/* Animated background blobs */}
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3 blur-[120px] animate-pulse-slow pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full -translate-x-1/3 -translate-y-1/3 blur-[100px] animate-float pointer-events-none" />
       
-      <div className="container px-4">
+      <div className="container px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
             <h2 className="font-headline text-3xl md:text-5xl font-bold mb-6">
@@ -47,92 +48,96 @@ export function Contact() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
               <a href="mailto:sriharirroverhere@gmail.com" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Email Me</p>
-                  <p className="text-lg font-headline font-semibold">sriharirroverhere@gmail.com</p>
+                  <p className="text-lg font-headline font-semibold group-hover:text-primary transition-colors">sriharirroverhere@gmail.com</p>
                 </div>
               </a>
 
               <a href="tel:+917826825822" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
+                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Call Me</p>
-                  <p className="text-lg font-headline font-semibold">+91 7826825822</p>
+                  <p className="text-lg font-headline font-semibold group-hover:text-accent transition-colors">+91 7826825822</p>
                 </div>
               </a>
 
               <a href={driveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <ExternalLink className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">View Portfolio</p>
-                  <p className="text-lg font-headline font-semibold">Works</p>
+                  <p className="text-lg font-headline font-semibold group-hover:text-primary transition-colors">Works</p>
                 </div>
               </a>
 
               <a href={behanceLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
+                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300">
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Behance Profile</p>
-                  <p className="text-lg font-headline font-semibold">View on Behance</p>
+                  <p className="text-lg font-headline font-semibold group-hover:text-accent transition-colors">View on Behance</p>
                 </div>
               </a>
             </div>
           </div>
 
-          <div className="bg-secondary/20 p-8 rounded-3xl border border-border shadow-2xl">
-            {isSubmitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12">
-                <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                  <CheckCircle2 className="w-10 h-10" />
+          <div className="bg-secondary/20 backdrop-blur-sm p-8 rounded-3xl border border-border shadow-2xl relative overflow-hidden group">
+            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative z-10">
+              {isSubmitted ? (
+                <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12">
+                  <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center text-primary animate-bounce">
+                    <CheckCircle2 className="w-10 h-10" />
+                  </div>
+                  <h3 className="text-2xl font-bold font-headline">Message Sent!</h3>
+                  <p className="text-muted-foreground">Thank you for your interest. I will review your message and respond as soon as possible.</p>
+                  <Button variant="outline" onClick={() => setIsSubmitted(false)}>Send Another Message</Button>
                 </div>
-                <h3 className="text-2xl font-bold font-headline">Message Sent!</h3>
-                <p className="text-muted-foreground">Thank you for your interest. I will review your message and respond as soon as possible.</p>
-                <Button variant="outline" onClick={() => setIsSubmitted(false)}>Send Another Message</Button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" placeholder="John Doe" required className="bg-background" />
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Name</Label>
+                      <Input id="name" placeholder="John Doe" required className="bg-background focus:ring-primary" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input id="email" type="email" placeholder="john@example.com" required className="bg-background focus:ring-primary" />
+                    </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" required className="bg-background" />
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input id="subject" placeholder="Project Inquiry" required className="bg-background focus:ring-primary" />
                   </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="Project Inquiry" required className="bg-background" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" placeholder="Tell me about your project..." className="min-h-[150px] bg-background" required />
-                </div>
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90 gap-2 h-12" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    <>
-                      <Send className="w-4 h-4 animate-pulse" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
-            )}
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea id="message" placeholder="Tell me about your project..." className="min-h-[150px] bg-background focus:ring-primary" required />
+                  </div>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 gap-2 h-12 transition-all hover:scale-[1.02]" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <Send className="w-4 h-4 animate-pulse" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>

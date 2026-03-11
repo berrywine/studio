@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -18,7 +17,7 @@ export function Hero() {
             src={heroImg.imageUrl}
             alt={heroImg.description}
             fill
-            className="object-cover opacity-40"
+            className="object-cover opacity-40 scale-105 animate-float"
             priority
             data-ai-hint={heroImg.imageHint}
           />
@@ -27,13 +26,17 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/20 z-0" />
       </div>
 
+      {/* Animated Background Accents */}
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-slow pointer-events-none z-10" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-pulse-slow delay-1000 pointer-events-none z-10" />
+
       {/* Content */}
       <div className="container relative z-20 px-4 text-center">
         <h2 className="font-headline text-primary text-sm tracking-[0.3em] uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
           Graphic Designer | Poster Artist
         </h2>
         <h1 className="font-headline text-5xl md:text-8xl font-black mb-6 tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          Srihari Viji <br /> <span className="text-accent">Ravichandran</span>
+          Srihari Viji <br /> <span className="text-accent text-gradient">Ravichandran</span>
         </h1>
         <p className="font-body text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-10 italic animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
           "Designing visuals that tell stories."
