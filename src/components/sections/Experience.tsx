@@ -1,4 +1,3 @@
-
 import { Calendar, Award, Users, BookOpen } from 'lucide-react';
 
 export function Experience() {
@@ -61,9 +60,14 @@ export function Experience() {
             </p>
             <div className="p-8 rounded-3xl bg-secondary/30 border border-border relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-               <p className="font-headline text-lg italic text-foreground relative z-10">
-                 "Passion is the most important tool in any designer's toolkit. My journey in the college design community has been about fueling that passion through visual storytelling."
-               </p>
+               <div className="relative z-10">
+                 <p className="font-headline text-xl italic text-foreground mb-4 leading-relaxed">
+                   "Stubborn by vision, loyal by design - a good designer"
+                 </p>
+                 <p className="text-primary font-bold tracking-widest uppercase text-xs">
+                   -- Srihari Viji Ravichandran
+                 </p>
+               </div>
             </div>
           </div>
         </div>
