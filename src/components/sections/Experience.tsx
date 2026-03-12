@@ -45,7 +45,6 @@ export function Experience() {
               Beyond technical skills, I am deeply involved in community building and leading creative teams. I believe design is a collaborative language that thrives when shared and nurtured.
             </p>
             <div className="p-8 rounded-3xl bg-secondary/30 border border-border relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
                <div className="relative z-10">
                  <p className="font-headline text-xl italic text-foreground mb-4 leading-relaxed">
                    "Stubborn by vision, loyal by design - a good designer"

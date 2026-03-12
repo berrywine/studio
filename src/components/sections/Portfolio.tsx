@@ -10,10 +10,6 @@ export function Portfolio() {
 
   return (
     <section id="portfolio" className="py-24 bg-secondary/20 relative overflow-hidden">
-      {/* Cinematic background accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse-slow pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] animate-float pointer-events-none" />
-
       <div className="container px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="font-headline text-3xl md:text-5xl font-bold mb-4">
@@ -27,7 +23,6 @@ export function Portfolio() {
         <div className="max-w-4xl mx-auto">
           <Card className="bg-background/40 backdrop-blur-md border-border hover:border-primary/50 transition-all duration-500 shadow-2xl overflow-hidden group">
             <CardContent className="p-12 text-center relative overflow-hidden">
-              {/* Subtle card animation background */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               <div className="relative z-10">

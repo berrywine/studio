@@ -17,7 +17,7 @@ export function Hero() {
             src={heroImg.imageUrl}
             alt={heroImg.description}
             fill
-            className="object-cover opacity-40 scale-105 animate-float"
+            className="object-cover opacity-40"
             priority
             data-ai-hint={heroImg.imageHint}
           />
@@ -25,9 +25,6 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background z-10" />
         <div className="absolute inset-0 bg-black/20 z-0" />
       </div>
-
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-slow pointer-events-none z-10" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-pulse-slow delay-1000 pointer-events-none z-10" />
 
       <div className="container relative z-20 px-4 text-center">
         <h2 className="font-headline text-primary text-sm tracking-[0.3em] uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">

@@ -49,25 +49,6 @@
   transform: translateY(-10px) scale(1.02);
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(2%, 4%) rotate(1deg); }
-  66% { transform: translate(-1%, -2%) rotate(-1deg); }
-}
-
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.1); }
-}
-
-.animate-float {
-  animation: float 15s ease-in-out infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 8s ease-in-out infinite;
-}
-
 .text-gradient {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
   background-size: 200% auto;

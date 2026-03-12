@@ -33,9 +33,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3 blur-[120px] animate-pulse-slow pointer-events-none" />
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full -translate-x-1/3 -translate-y-1/3 blur-[100px] animate-float pointer-events-none" />
-      
       <div className="container px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
@@ -95,7 +92,7 @@ export function Contact() {
             <div className="relative z-10">
               {isSubmitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12">
-                  <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center text-primary animate-bounce">
+                  <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center text-primary">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                   <h3 className="text-2xl font-bold font-headline">Message Sent!</h3>
@@ -125,7 +122,7 @@ export function Contact() {
                   <Button type="submit" className="w-full bg-primary hover:bg-primary/90 gap-2 h-12 transition-all hover:scale-[1.02]" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <>
-                        <Send className="w-4 h-4 animate-pulse" />
+                        <Send className="w-4 h-4" />
                         Sending...
                       </>
                     ) : (
