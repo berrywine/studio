@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, ExternalLink, Linkedin, Github, Globe } from 'lucide-react';
+import { Mail, ExternalLink, Linkedin, Github, Globe, Phone } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export function Contact() {
@@ -8,6 +8,7 @@ export function Contact() {
   const behanceLink = "https://www.behance.net/berrywine";
   const linkedinLink = "https://www.linkedin.com/in/srihari-viji-ravichandran-3b9b7928b";
   const githubLink = "https://github.com/berrywine";
+  const phoneNumber = "+91 7826825822";
 
   const contactLinks = [
     {
@@ -19,7 +20,15 @@ export function Contact() {
       hover: "group-hover:bg-primary"
     },
     {
-      label: "View Portfolio",
+      label: "Call Me",
+      value: phoneNumber,
+      href: `tel:${phoneNumber.replace(/\s+/g, '')}`,
+      icon: <Phone className="w-5 h-5" />,
+      color: "text-accent",
+      hover: "group-hover:bg-accent"
+    },
+    {
+      label: "View Works",
       value: "Works",
       href: driveLink,
       icon: <ExternalLink className="w-5 h-5" />,
@@ -57,7 +66,7 @@ export function Contact() {
       <div className="container px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="font-headline text-3xl md:text-5xl font-bold mb-6">
-            Let's Create <span className="text-primary">Together</span>
+            Let's Create <span className="text-primary text-gradient">Together</span>
           </h2>
           <p className="text-muted-foreground text-lg mb-10 font-body leading-relaxed max-w-2xl mx-auto">
             Open to collaborations, freelance projects, and creative design opportunities. If you have a story to tell, I'm here to design it.
@@ -70,8 +79,8 @@ export function Contact() {
               <a 
                 key={idx} 
                 href={link.href} 
-                target={link.href.startsWith('mailto') ? undefined : "_blank"} 
-                rel="noopener noreferrer" 
+                target={link.href.startsWith('http') ? "_blank" : undefined} 
+                rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined} 
                 className="group"
               >
                 <Card className="bg-secondary/20 hover:bg-secondary/40 border-border transition-all duration-300 h-full">
