@@ -1,29 +1,16 @@
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ExternalLink, ArrowDown, Globe, Github } from 'lucide-react';
 
 export function Hero() {
-  const heroImg = PlaceHolderImages.find(img => img.id === 'hero-bg');
   const driveLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
   const behanceLink = "https://www.behance.net/berrywine";
   const githubLink = "https://github.com/berrywine";
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       <div className="absolute inset-0 z-0">
-        {heroImg && (
-          <Image
-            src={heroImg.imageUrl}
-            alt={heroImg.description}
-            fill
-            className="object-cover opacity-40"
-            priority
-            data-ai-hint={heroImg.imageHint}
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background z-10" />
-        <div className="absolute inset-0 bg-black/20 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/60 to-background z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent z-0" />
       </div>
 
       <div className="container relative z-20 px-4 text-center">
