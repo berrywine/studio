@@ -1,8 +1,9 @@
 import { Button } from '@/components/ui/button';
-import { ExternalLink, ArrowDown, Globe, Github } from 'lucide-react';
+import { ExternalLink, ArrowDown, Globe, Github, FileText } from 'lucide-react';
 
 export function Hero() {
   const driveLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
+  const resumeLink = "https://drive.google.com/drive/folders/1x53THq5xpswL95VuMl6totcvsEYzcrr3?usp=drive_link";
   const behanceLink = "https://www.behance.net/berrywine";
   const githubLink = "https://github.com/berrywine";
 
@@ -30,6 +31,12 @@ export function Hero() {
           </Button>
           <Button size="lg" variant="outline" className="rounded-full border-primary text-primary hover:bg-primary/10 px-8" asChild>
             <a href="#contact">Contact Me</a>
+          </Button>
+          <Button size="lg" variant="outline" className="rounded-full border-accent text-accent hover:bg-accent/10 px-8 gap-2" asChild>
+            <a href={resumeLink} target="_blank" rel="noopener noreferrer">
+              <FileText className="w-4 h-4" />
+              View Resume
+            </a>
           </Button>
           
           <div className="flex flex-wrap gap-2 justify-center">
