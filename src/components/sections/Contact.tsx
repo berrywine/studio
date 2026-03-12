@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, ExternalLink, Send, CheckCircle2, Globe, Linkedin } from 'lucide-react';
+import { Mail, Phone, ExternalLink, Send, CheckCircle2, Globe, Linkedin, Github } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export function Contact() {
@@ -16,11 +16,11 @@ export function Contact() {
   const driveLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
   const behanceLink = "https://www.behance.net/berrywine";
   const linkedinLink = "https://www.linkedin.com/in/srihari-viji-ravichandran-3b9b7928b";
+  const githubLink = "https://github.com/berrywine";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -33,7 +33,6 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 bg-background relative overflow-hidden">
-      {/* Animated background blobs */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3 blur-[120px] animate-pulse-slow pointer-events-none" />
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full -translate-x-1/3 -translate-y-1/3 blur-[100px] animate-float pointer-events-none" />
       
@@ -58,16 +57,6 @@ export function Contact() {
                 </div>
               </a>
 
-              <a href="tel:+917826825822" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Call Me</p>
-                  <p className="text-lg font-headline font-semibold group-hover:text-accent transition-colors">+91 7826825822</p>
-                </div>
-              </a>
-
               <a href={driveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <ExternalLink className="w-5 h-5" />
@@ -78,16 +67,6 @@ export function Contact() {
                 </div>
               </a>
 
-              <a href={behanceLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300">
-                  <Globe className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Behance Profile</p>
-                  <p className="text-lg font-headline font-semibold group-hover:text-accent transition-colors">Behance</p>
-                </div>
-              </a>
-
               <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <Linkedin className="w-5 h-5" />
@@ -95,6 +74,16 @@ export function Contact() {
                 <div>
                   <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Professional</p>
                   <p className="text-lg font-headline font-semibold group-hover:text-primary transition-colors">LinkedIn</p>
+                </div>
+              </a>
+
+              <a href={githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                  <Github className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Code</p>
+                  <p className="text-lg font-headline font-semibold group-hover:text-accent transition-colors">GitHub</p>
                 </div>
               </a>
             </div>

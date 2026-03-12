@@ -1,16 +1,16 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ExternalLink, ArrowDown, Globe } from 'lucide-react';
+import { ExternalLink, ArrowDown, Globe, Github } from 'lucide-react';
 
 export function Hero() {
   const heroImg = PlaceHolderImages.find(img => img.id === 'hero-bg');
   const driveLink = "https://drive.google.com/drive/folders/1R9A_cPyjDCPLi8wFtp_wIxYjwF4zPDeL?usp=drive_link";
   const behanceLink = "https://www.behance.net/berrywine";
+  const githubLink = "https://github.com/berrywine";
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Image with Cinematic Filter */}
       <div className="absolute inset-0 z-0">
         {heroImg && (
           <Image
@@ -26,11 +26,9 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/20 z-0" />
       </div>
 
-      {/* Animated Background Accents */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-slow pointer-events-none z-10" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-pulse-slow delay-1000 pointer-events-none z-10" />
 
-      {/* Content */}
       <div className="container relative z-20 px-4 text-center">
         <h2 className="font-headline text-primary text-sm tracking-[0.3em] uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
           Graphic Designer | Poster Artist
@@ -50,7 +48,7 @@ export function Hero() {
             <a href="#contact">Contact Me</a>
           </Button>
           
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2 justify-center">
             <Button size="lg" variant="ghost" className="rounded-full hover:bg-white/10" asChild>
               <a href={driveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 <ExternalLink className="w-4 h-4" />
@@ -63,11 +61,16 @@ export function Hero() {
                 Behance
               </a>
             </Button>
+            <Button size="lg" variant="ghost" className="rounded-full hover:bg-white/10" asChild>
+              <a href={githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <Github className="w-4 h-4" />
+                GitHub
+              </a>
+            </Button>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50 z-20">
         <ArrowDown className="w-6 h-6" />
       </div>

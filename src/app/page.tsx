@@ -1,4 +1,3 @@
-
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
 import { Portfolio } from '@/components/sections/Portfolio';
@@ -30,7 +29,7 @@ export default function Home() {
             <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
           </div>
           <p className="text-[10px] text-muted-foreground uppercase tracking-[0.2em]">
-            © {new Date().getFullYear()} Srihari Viji Ravichandran. All Rights Reserved.
+            © 2025 Srihari Viji Ravichandran. All Rights Reserved.
           </p>
         </div>
       </footer>

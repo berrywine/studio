@@ -1,4 +1,4 @@
-import { Calendar, Award, Users, BookOpen } from 'lucide-react';
+import { Users } from 'lucide-react';
 
 export function Experience() {
   const experiences = [
@@ -8,20 +8,6 @@ export function Experience() {
       description: "Organized and conceptualized creative design events and poster campaigns for university-wide festivals.",
       icon: <Users className="w-5 h-5" />,
       tag: "Leadership"
-    },
-    {
-      title: "Lead Creative",
-      org: "Awareness Design Projects",
-      description: "Worked on impactful awareness design projects including election awareness poster campaigns and social advocacy.",
-      icon: <Award className="w-5 h-5" />,
-      tag: "Impact"
-    },
-    {
-      title: "Visual Strategist",
-      org: "Cinema-Inspired Poster Concepts",
-      description: "Developed and curated a collection of cinema-inspired poster concepts, pushing the boundaries of visual storytelling.",
-      icon: <BookOpen className="w-5 h-5" />,
-      tag: "Creativity"
     }
   ];
 
