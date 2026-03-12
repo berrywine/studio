@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * SECURITY RULES DOCUMENTATION
+     *
+     * Core Philosophy:
+     * This ruleset implements a strict user-ownership model. The security posture is designed for 
+     * a portfolio application where data privacy is paramount. All sensitive information is 
+     * logically and physically partitioned by the User's Unique Identifier (UID).
+     *
+     * Data Structure:
+     * The database follows a hierarchical structure where user-specific data is nested under 
+     * top-level user documents: `/users/{ownerId}/...`. Specifically, contact inquiries are 
+     * stored in the `contactMessages` subcollection.
+     *
+     * Key Security Decisions:
+     * 1. Path-Based Authorization: We rely on the Firestore path `{ownerId}` as the primary 
+     *    authorization mechanism. By matching the wildcard in the path directly to the 
+     *    authenticated user's `request.auth.uid`, we ensure high-performance rules that 
+     *    don't require additional document lookups (get() calls).
+     * 2. Prototyping Flexibility: While authorization is strictly enforced (who can access), 
+     *    the internal shape of the data (schema validation) is kept flexible to allow for 
+     *    rapid feature iteration without needing to update rules for every field change.
+     * 3. Relational Integrity: We enforce consistency between the document's internal 'id' 
+     *    field and its location in the database path to prevent data misalignment.
+     * 4. State Safety: All destructive operations (update/delete) are guarded by existence 
+     *    checks to prevent operations on non-existent records.
+     */
+
+    // --- Helper Functions ---
+
+    /**
+     * @description Checks if the request is made by an authenticated user.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * @description Checks if the authenticated user's UID matches the provided userId.
+     * @param userId The UID to verify against the authenticated session.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * @description Combined check for ownership and document existence for state-changing operations.
+     * @param userId The UID of the owner.
+     */
+    function isExistingOwner(userId) {
+      return resource != null && isOwner(userId);
+    }
+
+    // --- Collection Rules ---
+
+    /**
+     * @description Rules for ContactMessage entities.
+     * @path /users/{ownerId}/contactMessages/{contactMessageId}
+     * @allow (get) If the authenticated user is the owner of the path (ownerId == auth.uid).
+     * @allow (create) If the owner creates the message and the internal ID matches the document ID.
+     * @deny (list) If a user attempts to list messages belonging to a different ownerId.
+     * @principle Restricts access to a user's own data tree and validates relational integrity.
+     */
+    match /users/{ownerId}/contactMessages/{contactMessageId} {
+      
+      // Read: Only the portfolio owner can read or list their received messages.
+      allow get: if isOwner(ownerId);
+      allow list: if isOwner(ownerId);
+
+      // Create: Only the owner can create records in their path.
+      // We validate that the internal 'id' field matches the Firestore document ID for consistency.
+      allow create: if isOwner(ownerId) && request.resource.data.id == contactMessageId;
+
+      // Update: Only the owner can update existing messages (e.g., marking as read).
+      // We enforce that the internal 'id' is immutable to maintain relational integrity.
+      allow update: if isExistingOwner(ownerId) && request.resource.data.id == resource.data.id;
+
+      // Delete: Only the owner can remove messages from their inbox.
+      allow delete: if isExistingOwner(ownerId);
+    }
+
+    // Default deny for any paths not explicitly matched.
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}

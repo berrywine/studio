@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "ContactMessage": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactMessage",
+      "type": "object",
+      "description": "Represents a message received from a user through the website's contact form, intended for the portfolio owner.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ContactMessage entity."
+        },
+        "senderName": {
+          "type": "string",
+          "description": "The full name of the person who sent the message."
+        },
+        "senderEmail": {
+          "type": "string",
+          "description": "The email address of the person who sent the message.",
+          "format": "email"
+        },
+        "senderPhone": {
+          "type": "string",
+          "description": "The optional phone number of the person who sent the message."
+        },
+        "subject": {
+          "type": "string",
+          "description": "The subject line of the message."
+        },
+        "messageBody": {
+          "type": "string",
+          "description": "The main content or body of the message."
+        },
+        "receivedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the message was received.",
+          "format": "date-time"
+        },
+        "isRead": {
+          "type": "boolean",
+          "description": "A boolean flag indicating whether the message has been marked as read by the portfolio owner."
+        }
+      },
+      "required": [
+        "id",
+        "senderName",
+        "senderEmail",
+        "subject",
+        "messageBody",
+        "receivedAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{ownerId}/contactMessages/{contactMessageId}",
+        "definition": {
+          "entityName": "ContactMessage",
+          "schema": {
+            "$ref": "#/backend/entities/ContactMessage"
+          },
+          "description": "Stores individual contact messages received by the portfolio owner. Access is restricted to the authenticated 'ownerId' from the path, ensuring authorization independence. Includes fields like senderName, senderEmail, subject, messageBody, receivedAt, and isRead.",
+          "params": [
+            {
+              "name": "ownerId",
+              "description": "The unique identifier of the portfolio owner, derived from Firebase Authentication UID, who receives these contact messages."
+            },
+            {
+              "name": "contactMessageId",
+              "description": "The unique identifier for a specific contact message."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to securely store contact messages received through the portfolio website, ensuring that only the authenticated portfolio owner can access them. To achieve Authorization Independence (CRITICAL principle), the `ContactMessage` documents are nested under the specific user's path, specifically `/users/{ownerId}/contactMessages/{contactMessageId}`. This structure inherently denormalizes the ownership context into the path itself. The `ownerId` in the path directly corresponds to the authenticated user's UID (`request.auth.uid`), eliminating the need for `get()` operations in security rules to check parent documents or `ownerId` fields within the `ContactMessage` documents themselves. This makes rules simple and atomic.\n\nThis design effectively supports QAPs (Rules are not Filters) by ensuring that `list` operations are implicitly secured. When the portfolio owner requests their messages, they will query `/users/{request.auth.uid}/contactMessages`. The security rules can then easily match `request.auth.uid` against the `{ownerId}` wildcard in the path, guaranteeing that only messages belonging to the authenticated user are returned, without needing to filter results after the fact. Structural Segregation is maintained as all documents within `/users/{ownerId}/contactMessages` share the identical security posture: private access solely for the specified `ownerId`. This approach adheres to the 'Private Data' and 'Hierarchical Paths for User-Owned Data' access modeling mandates, providing a robust, scalable, and debuggable solution for managing contact inquiries."
+  }
+}
